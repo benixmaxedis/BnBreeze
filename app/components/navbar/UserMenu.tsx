@@ -58,6 +58,13 @@ export default function UserMenu({ currentUser }: UserMenuProps) {
                   <MenuItem
                     onClick={() => {
                       toggleOpen();
+                      router.push('/');
+                    }}
+                    label="Home"
+                  />
+                  <MenuItem
+                    onClick={() => {
+                      toggleOpen();
                       router.push('/trips');
                     }}
                     label="My trips"
