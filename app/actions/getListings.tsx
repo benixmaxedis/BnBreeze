@@ -1,6 +1,6 @@
 import prisma from '@/app/libs/prismadb';
 
-export interface IListingParams {
+export interface IListingsParams {
   userId?: string;
   guestCount?: number;
   roomCount?: number;
@@ -11,16 +11,16 @@ export interface IListingParams {
   category?: string;
 }
 
-export default async function getListings(params: IListingParams) {
+export default async function getListings(params: IListingsParams) {
   try {
     const {
       userId,
-      guestCount,
       roomCount,
+      guestCount,
       bathroomCount,
+      locationValue,
       startDate,
       endDate,
-      locationValue,
       category,
     } = params;
 
@@ -39,11 +39,13 @@ export default async function getListings(params: IListingParams) {
         gte: +roomCount,
       };
     }
+
     if (guestCount) {
       query.guestCount = {
         gte: +guestCount,
       };
     }
+
     if (bathroomCount) {
       query.bathroomCount = {
         gte: +bathroomCount,
@@ -59,8 +61,10 @@ export default async function getListings(params: IListingParams) {
         reservations: {
           some: {
             OR: [
-              { endDate: { gte: startDate }, startDate: { lte: startDate } },
-
+              {
+                endDate: { gte: startDate },
+                startDate: { lte: startDate },
+              },
               {
                 startDate: { lte: endDate },
                 endDate: { gte: endDate },
@@ -82,8 +86,6 @@ export default async function getListings(params: IListingParams) {
       ...listing,
       createdAt: listing.createdAt.toISOString(),
     }));
-
-    return safeListings;
 
     return safeListings;
   } catch (error: any) {
