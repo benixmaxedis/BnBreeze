@@ -1,3 +1,5 @@
+import '@/app/libs/prismadb';
+
 interface IParams {
   listingId?: string;
 }
