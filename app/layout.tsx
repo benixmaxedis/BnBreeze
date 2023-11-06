@@ -12,8 +12,8 @@ import SearchModal from './components/modals/SearchModal';
 const nunito = Nunito({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Airbnb App',
-  description: 'Airbnb clone',
+  title: 'Holiday homes and rentals - Bnbreeze',
+  description: 'BnBreeze website',
 };
 
 export default async function RootLayout({
