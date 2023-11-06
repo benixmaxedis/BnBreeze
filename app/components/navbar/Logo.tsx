@@ -11,8 +11,8 @@ export default function Logo() {
       onClick={() => router.push('/')}
       alt="Logo"
       className="hidden md:block cursor-pointer"
-      height="100"
-      width="100"
+      height="175"
+      width="175"
       src="/images/logo.png"
     />
   );
